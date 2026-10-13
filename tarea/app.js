@@ -1,7 +1,22 @@
+class Tarea {
+  constructor(nombre) {
+    this.nombre = nombre;
+    this.completada = false;
+  }
+
+  completar() {
+    this.completada = true;
+  }
+
+  cambiarNombre(nuevoNombre) {
+    this.nombre = nuevoNombre;
+  }
+}
+
 const tareas = [
-  "Estudiar JavaScript",
-  "Terminar el laboratorio",
-  "Repasar POO",
+  new Tarea("Estudiar JavaScript"),
+  new Tarea("Terminar el laboratorio"),
+  new Tarea("Repasar POO"),
 ];
 
 const lista = document.querySelector("#listaTareas");
@@ -15,17 +30,25 @@ function mostrarTareas() {
 
   tareas.forEach(function (tarea, indice) {
     const elemento = document.createElement("li");
-    elemento.textContent = tarea + " ";
+    elemento.textContent =
+      tarea.nombre + (tarea.completada ? " (Completada) " : " ");
 
-    const boton = document.createElement("button");
-    boton.textContent = "Eliminar";
+    const botonCompletar = document.createElement("button");
+    botonCompletar.textContent = "Completar";
+    botonCompletar.addEventListener("click", function () {
+      tarea.completar();
+      mostrarTareas();
+    });
 
-    boton.addEventListener("click", function () {
+    const botonEliminar = document.createElement("button");
+    botonEliminar.textContent = "Eliminar";
+    botonEliminar.addEventListener("click", function () {
       tareas.splice(indice, 1);
       mostrarTareas();
     });
 
-    elemento.appendChild(boton);
+    elemento.appendChild(botonCompletar);
+    elemento.appendChild(botonEliminar);
     lista.appendChild(elemento);
   });
 
@@ -40,7 +63,9 @@ formulario.addEventListener("submit", function (evento) {
     return;
   }
 
-  tareas.push(nombreTarea.value.trim());
+  const nuevaTarea = new Tarea(nombreTarea.value.trim());
+  tareas.push(nuevaTarea);
+
   nombreTarea.value = "";
   mensaje.textContent = "Tarea agregada correctamente.";
   mostrarTareas();
