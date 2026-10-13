@@ -89,12 +89,22 @@ class Tarea {
 
 ## Donde uso DOM, eventos y objetos
 
-Pendiente de completar.
+| Parte   | Código donde aparece                                                                                   | Para qué sirve                                |
+| ------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------- |
+| DOM     | `document.querySelector()` y `document.createElement()`                                                | Busca y crea elementos en la página.          |
+| Eventos | `addEventListener("click", ...)`, `addEventListener("submit", ...)` y `addEventListener("input", ...)` | Permite agregar, completar y eliminar tareas. |
+| Objetos | `class Tarea` y `new Tarea(...)`                                                                       | Guarda el nombre y el estado de cada tarea.   |
 
 ## Pruebas realizadas
 
-Pendiente de completar.
+| Acción                     | Resultado esperado                | Resultado obtenido                     | ¿Cumple? |
+| -------------------------- | --------------------------------- | -------------------------------------- | -------- |
+| Abrir la página            | Aparecen tres tareas iniciales.   | Aparecieron las tres tareas.           | Sí       |
+| Agregar una tarea          | La tarea aparece en la lista.     | La tarea se agregó correctamente.      | Sí       |
+| Enviar el formulario vacío | Aparece un mensaje de validación. | Apareció el mensaje de error.          | Sí       |
+| Completar una tarea        | Se muestra "(Completada)".        | La tarea mostró que estaba completada. | Sí       |
+| Eliminar una tarea         | La tarea desaparece.              | La tarea se eliminó correctamente.     | Sí       |
 
 ## Por que disene asi mi clase
 
-Pendiente de completar.
+Diseñé la clase `Tarea` con los atributos `nombre` y `completada` porque necesito guardar la descripción de cada actividad y saber si ya terminó. El método `completar()` cambia su estado y `cambiarNombre()` permite modificar el nombre. Así, cada objeto tiene sus propios datos y acciones.
