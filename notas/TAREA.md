@@ -62,7 +62,30 @@ nombreTarea.addEventListener("input", function () {
 
 ## Version 3: con clases y objetos
 
-Pendiente de implementar.
+**Qué agregué:** la clase `Tarea`, con los atributos `nombre` y `completada`, y los métodos `completar()` y `cambiarNombre()`.
+
+**Por qué:** para organizar los datos y las acciones de cada tarea.
+
+**Qué cambió en el comportamiento:** ahora puedo agregar tareas como objetos, marcarlas como completadas y eliminarlas.
+
+Código principal:
+
+```js
+class Tarea {
+  constructor(nombre) {
+    this.nombre = nombre;
+    this.completada = false;
+  }
+
+  completar() {
+    this.completada = true;
+  }
+
+  cambiarNombre(nuevoNombre) {
+    this.nombre = nuevoNombre;
+  }
+}
+```
 
 ## Donde uso DOM, eventos y objetos
 
